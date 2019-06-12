@@ -34,7 +34,7 @@ def load_dataset(enc, path, combine):
                     raw_text += fp.read()
                 methods = raw_text.splitlines()
                 for method in tqdm.tqdm(methods):
-                    tokens = np.stack(enc.encode(raw_text))
+                    tokens = np.stack(enc.encode(method))
                     token_chunks.append(tokens)
             except:
                 print("Skipping file due to incorrect encoding...")
