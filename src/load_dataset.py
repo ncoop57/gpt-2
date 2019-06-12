@@ -32,17 +32,15 @@ def load_dataset(enc, path, combine):
             try:
                 with open(path, 'r') as fp:
                     raw_text += fp.read()
-                if len(raw_text) >= combine:
+                methods = raw_text.splitlines()
+                for method in methods:
                     tokens = np.stack(enc.encode(raw_text))
                     token_chunks.append(tokens)
-                    raw_text = ''
-                else:
-                    raw_text += '<|endoftext|>'
             except:
                 print("Skipping file due to incorrect encoding...")
-    if raw_text:
-        tokens = np.stack(enc.encode(raw_text))
-        token_chunks.append(tokens)
+#    if raw_text:
+#        tokens = np.stack(enc.encode(raw_text))
+#        token_chunks.append(tokens)
     return token_chunks
 
 
