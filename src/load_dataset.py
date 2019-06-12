@@ -33,7 +33,7 @@ def load_dataset(enc, path, combine):
                 with open(path, 'r') as fp:
                     raw_text += fp.read()
                 methods = raw_text.splitlines()
-                for method in methods:
+                for method in tqdm.tqdm(methods):
                     tokens = np.stack(enc.encode(raw_text))
                     token_chunks.append(tokens)
             except:
